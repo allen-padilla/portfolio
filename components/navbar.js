@@ -17,16 +17,18 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import ThemeToggleButton from "./theme-toggle-button";
 
-const LinkItem = ({ href, path, children }) => {
+const LinkItem = ({ href, path, target, children, ...props }) => {
   const active = path === href;
   const inactiveColor = useColorModeValue("gray200", "whiteAlpha.900");
 
   return (
-    <NextLink href={href}>
+    <NextLink href={href} passHref scroll={false}>
       <Link
         p={2}
         bg={active ? "glassTeal" : undefined}
         color={active ? "#202023" : inactiveColor}
+        target={target}
+        {...props}
       >
         {children}
       </Link>
@@ -73,10 +75,18 @@ const Navbar = (props) => {
           <LinkItem href="/projects" path={path}>
             Projects
           </LinkItem>
-          <LinkItem href="https://www.linkedin.com/feed/" path={path}>
+          <LinkItem
+            target="_blank"
+            href="https://www.linkedin.com/feed/"
+            path={path}
+          >
             LinkedIn
           </LinkItem>
-          <LinkItem href="/source_code" path={path}>
+          <LinkItem
+            target="_blank"
+            href="https://github.com/allen-padilla/portfolio"
+            path={path}
+          >
             Source Code
           </LinkItem>
         </Stack>
@@ -91,18 +101,26 @@ const Navbar = (props) => {
                 aria-label="Menu"
               />
               <MenuList>
-                <NextLink href="/" passHref>
+                <NextLink href="/">
                   <MenuItem as={Link}>About</MenuItem>
                 </NextLink>
-                <NextLink href="/projects" passHref>
+                <NextLink href="/projects">
                   <MenuItem as={Link}>Projects</MenuItem>
                 </NextLink>
-                <NextLink href="/" passHref>
-                  <MenuItem as={Link}>LinkedIn</MenuItem>
-                </NextLink>
-                <NextLink href="/" passHref>
-                  <MenuItem as={Link}>Source Code</MenuItem>
-                </NextLink>
+                <MenuItem
+                  as={Link}
+                  href="https://www.linkedin.com/feed/"
+                  target="_blank"
+                >
+                  LinkedIn
+                </MenuItem>
+                <MenuItem
+                  as={Link}
+                  href="https://github.com/allen-padilla/portfolio"
+                  target="_blank"
+                >
+                  Portfolio
+                </MenuItem>
               </MenuList>
             </Menu>
           </Box>
