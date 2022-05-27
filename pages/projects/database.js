@@ -5,7 +5,7 @@ import Layout from '../../components/layouts/page'
 
 const Database = () => {
   return (
-    <Layout>
+    <Layout title="Web Database">
       <Container>
         <Box
           borderRadius="lg"

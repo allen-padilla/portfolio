@@ -61,11 +61,11 @@ const Page = () => {
           </Heading>
           <Paragraph>
             Hey nice to meet you! My name is Allen, and I&apos;ve loved coding since I was 7 years old!
-            My first few steps into programming was developing games in a very old app called BYOND.
-            Using it's built in "DreamMaker" program.
+            My first few steps into programming was developing games in a very old app called <strong>BYOND</strong>.
+            Using it's built in <strong>DreamMaker</strong> program.
           </Paragraph>
           <Paragraph>
-            Going through web development courses at Red River College I found a love for creating and designing web applications, and now I'm trying to push my skills further!
+            Going through web development courses at <strong>Red River College</strong> I found a love for creating and designing web applications, and now I'm trying to push my skills further!
           </Paragraph>
 
           <Box mt={4} align="center">

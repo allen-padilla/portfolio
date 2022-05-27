@@ -8,7 +8,7 @@ import PortfolioPic from '../public/projects/portfolio/home.png'
 
 const Projects = () => {
   return (
-    <Layout>
+    <Layout title="Projects">
       <Container>
         <Box
           borderRadius="lg"
@@ -21,7 +21,7 @@ const Projects = () => {
         </Box>
         <Section delay={0.1}>
           <Heading as="h3" fontSize={20} variant="page-title">
-            Current & Supported Projects
+            Current Projects
           </Heading>
         </Section>
 
