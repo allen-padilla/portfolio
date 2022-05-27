@@ -6,6 +6,7 @@ import {
   Container,
   Heading,
   Image,
+  Divider,
   useColorModeValue
 } from "@chakra-ui/react";
 import Layout from '../components/layouts/page'
@@ -55,7 +56,9 @@ const Page = () => {
           </Box>
         </Section>
 
+
         <Section delay={0.4}>
+          <Divider mb={4} />
           <Heading as="h3" variant="section-title">
             About
           </Heading>
@@ -70,12 +73,13 @@ const Page = () => {
 
           <Box mt={4} align="center">
             <NextLink href="/projects">
-              <Button w={250} colorScheme="cyan" rightIcon={<ChevronRightIcon />}>View my projects!</Button>
+              <Button w={250} colorScheme="green" rightIcon={<ChevronRightIcon />}>View my projects!</Button>
             </NextLink>
           </Box>
         </Section>
 
         <Section delay={0.5}>
+          <Divider mb={4} />
           <Heading as="h3" variant="section-title">
             Biography
           </Heading>
@@ -100,6 +104,7 @@ const Page = () => {
         </Section>
 
         <Section delay={0.6}>
+          <Divider mb={4} />
           <Heading as="h3" variant="section-title">
             Languages
           </Heading>
@@ -119,7 +124,7 @@ const Page = () => {
             </Paragraph>
             <Box mt={4} align="center">
               <NextLink href="/projects/database">
-                <Button w={250} colorScheme="cyan" rightIcon={<ChevronRightIcon />}>Read More</Button>
+                <Button w={250} colorScheme="green" rightIcon={<ChevronRightIcon />}>Read More</Button>
               </NextLink>
             </Box>
           </Box>
