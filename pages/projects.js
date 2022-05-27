@@ -50,6 +50,11 @@ const Projects = () => {
             </WorkGridItem>
           </Section>
         </SimpleGrid>
+
+        <Section delay={0.2}>
+          <Divider />
+        </Section>
+
       </Container>
     </Layout>
   )
