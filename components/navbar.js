@@ -77,7 +77,7 @@ const Navbar = (props) => {
           </LinkItem>
           <LinkItem
             target="_blank"
-            href="https://www.linkedin.com/feed/"
+            href="https://www.linkedin.com/in/allen-padilla/"
             path={path}
           >
             LinkedIn
@@ -109,7 +109,7 @@ const Navbar = (props) => {
                 </NextLink>
                 <MenuItem
                   as={Link}
-                  href="https://www.linkedin.com/feed/"
+                  href="https://www.linkedin.com/in/allen-padilla/"
                   target="_blank"
                 >
                   LinkedIn

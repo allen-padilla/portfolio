@@ -10,7 +10,3 @@ export const LanguageOut = styled.span`
 font-weight: bold;
 margin-right: 1em;
 `
-
-export const LanguageDescription = styled.span`
-padding-left: 0em;
-`

@@ -13,7 +13,7 @@ import Section from "../components/section";
 import Paragraph from "../components/paragraph";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { BioSection, BioYear } from "../components/bio";
-import { LanguageSection, LanguageOut, LanguageDescription } from "../components/languages";
+import { LanguageSection, LanguageOut } from "../components/languages";
 
 const Page = () => {
   return (
@@ -60,13 +60,17 @@ const Page = () => {
             About
           </Heading>
           <Paragraph>
-            I&apos;m Allen!
-
+            Hey nice to meet you! My name is Allen, and I&apos;ve loved coding since I was 7 years old!
+            My first few steps into programming was developing games in a very old app called BYOND.
+            Using it's built in "DreamMaker" program.
+          </Paragraph>
+          <Paragraph>
+            Going through web development courses at Red River College I found a love for creating and designing web applications, and now I'm trying to push my skills further!
           </Paragraph>
 
           <Box mt={4} align="center">
             <NextLink href="/projects">
-              <Button w={250} colorScheme="cyan" rightIcon={<ChevronRightIcon />}>Projects</Button>
+              <Button w={250} colorScheme="cyan" rightIcon={<ChevronRightIcon />}>View my projects!</Button>
             </NextLink>
           </Box>
         </Section>
@@ -85,13 +89,13 @@ const Page = () => {
             <BioYear>
               2019
             </BioYear>
-            Completed Business Information Technology at Red River College
+            Received Honours for Business Information Technology at Red River College
           </BioSection>
           <BioSection>
             <BioYear>
               2020 - Present
             </BioYear>
-            Working as a full-stack developer at Computers for Schools Manitoba
+            Full-stack Developer at Computers for Schools Manitoba
           </BioSection>
         </Section>
 
@@ -106,11 +110,13 @@ const Page = () => {
                 PHP | Laravel | Xampp
               </LanguageOut>
             </LanguageSection>
-            <LanguageDescription>
+            <Paragraph>
               My first professional project was to create a simple pure PHP database app.
-              With very little knowledge from school, I read, learned and grew my knowledge of PHP tremendously. <br />
-              Later on this simple database was recognized by the Executive Director, where it transitioned from my own simple PHP framework to a full application using Laravel used by all Manitoba locations.
-            </LanguageDescription>
+              With very little knowledge from school, I read, learned and grew my knowledge of PHP tremendously.
+            </Paragraph>
+            <Paragraph>
+              This database was later recognized by the Executive Director, where it transitioned from my own simple PHP framework to a full application using Laravel used by all Manitoba locations.
+            </Paragraph>
             <Box mt={4} align="center">
               <NextLink href="/projects/database">
                 <Button w={250} colorScheme="cyan" rightIcon={<ChevronRightIcon />}>Read More</Button>
@@ -121,35 +127,16 @@ const Page = () => {
           <Box mb={4}>
             <LanguageSection>
               <LanguageOut>
-                JavaScript | React
+                JavaScript (ES6) | jQuery | React
               </LanguageOut>
             </LanguageSection>
-            <LanguageDescription>
-              I first learned JavaScript in 2017 when I was in school at Red River College, using only Vanilla JS and basic DOM manipulation. <br />
-
-            </LanguageDescription>
+            <Paragraph>
+              I first learned JavaScript in 2017 when I was in Web Development classes at Red River College, using only Vanilla JS and basic DOM manipulation.
+            </Paragraph>
+            <Paragraph>
+              To continue my growth I started learning from all types of resources. From the <strong>CSX CodeSmith</strong> program relearning the basics (Callbacks, Closure &amp; Scope, Recursion, and Asynchronous JavaScript), working through <strong>The Odin Project</strong> and it's JavaScript sections, to reading official documentation on <strong>React</strong>, and <strong>Next.js</strong>.
+            </Paragraph>
           </Box>
-
-          <Box mb={4}>
-            <LanguageSection>
-              <LanguageOut>
-                C# | Visual Studio
-              </LanguageOut>
-            </LanguageSection>
-            <LanguageDescription>
-            </LanguageDescription>
-          </Box>
-
-          <Box mb={4}>
-            <LanguageSection>
-              <LanguageOut>
-                Ruby | Ruby On Rails
-              </LanguageOut>
-            </LanguageSection>
-            <LanguageDescription>
-            </LanguageDescription>
-          </Box>
-
         </Section>
       </Container >
     </Layout >

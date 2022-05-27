@@ -1,6 +1,5 @@
-import { Box, Container, Heading, SimpleGrid, Divider, useColorModeValue } from '@chakra-ui/react'
+import { Box, Container, Heading, useColorModeValue } from '@chakra-ui/react'
 import Section from '../../components/section'
-import { WorkGridItem } from '../../components/grid-item'
 import Layout from '../../components/layouts/page'
 
 
@@ -23,8 +22,6 @@ const Database = () => {
           </Heading>
         </Section>
 
-        <SimpleGrid columns={[1, 1, 2]} gap={6}>
-        </SimpleGrid>
       </Container>
     </Layout>
   )
