@@ -1,30 +1,44 @@
-import { Box, Container, Heading, useColorModeValue } from '@chakra-ui/react'
-import Section from '../../components/section'
-import Layout from '../../components/layouts/page'
-
+import NextLink from "next/link";
+import {
+  Box,
+  Container,
+  Heading,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Badge,
+} from "@chakra-ui/react";
+import Section from "../../components/section";
+import Layout from "../../components/layouts/page";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 
 const Portfolio = () => {
   return (
     <Layout title="Personal Portfolio">
-      <Container>
-        <Box
-          borderRadius="lg"
-          bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
-          p={3}
-          mt={3}
-          mb={6}
-          align="center">
-          Mini build blog for my Portfolio
-        </Box>
+      <Container mt={4}>
         <Section delay={0.1}>
-          <Heading as="h3" fontSize={20} variant="page-title">
-            Personal Portfolio
-          </Heading>
+          <Breadcrumb
+            spacing="2px"
+            separator={<ChevronRightIcon color="green.500" />}
+          >
+            <BreadcrumbItem>
+              <NextLink href="/projects">
+                <BreadcrumbLink>Projects</BreadcrumbLink>
+              </NextLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink href="#" fontSize={20}>
+                Personal Portfolio
+                <Badge colorScheme="whatsapp" ml={2}>
+                  2022 -
+                </Badge>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
         </Section>
-
       </Container>
     </Layout>
-  )
-}
+  );
+};
 
-export default Portfolio
+export default Portfolio;

@@ -11,10 +11,6 @@ align-items: center;
 height: 30px
 line-height: 20px;
 padding: 10px;
-
-&:hover img {
-  transform: rotate(20deg);
-}
 `
 const Logo = () => {
   const footPrintImg = `/images/`
@@ -23,9 +19,6 @@ const Logo = () => {
     <Link href="/">
       <a>
         <LogoBox>
-          <Image>
-
-          </Image>
           <Text color={useColorModeValue('gray.800', 'whiteAlpha.900')}
             fontFamily="M PLUS Rounded 1c"
             fontWeight="bold"

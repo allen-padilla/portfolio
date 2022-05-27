@@ -20,18 +20,7 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 const Database = () => {
   return (
     <Layout title="Web Database">
-      <Container>
-        <Box
-          borderRadius="lg"
-          bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
-          p={3}
-          mt={3}
-          mb={6}
-          align="center"
-        >
-          Mini build blog for my Web Database
-        </Box>
-
+      <Container mt={4}>
         <Section delay={0.1}>
           <Breadcrumb spacing="2px" separator={<ChevronRightIcon color="green.500" />}>
             <BreadcrumbItem>
@@ -42,7 +31,7 @@ const Database = () => {
             <BreadcrumbItem isCurrentPage>
               <BreadcrumbLink href="#" fontSize={20}>
                 Web Database
-                <Badge colorScheme="whatsapp" ml={2}>2020 - Present</Badge>
+                <Badge colorScheme="whatsapp" ml={2}>2020 - </Badge>
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
