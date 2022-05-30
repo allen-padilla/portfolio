@@ -7,6 +7,8 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Badge,
+  List,
+  ListItem,
 } from "@chakra-ui/react";
 import Section from "../../components/section";
 import Layout from "../../components/layouts/page";
@@ -35,6 +37,21 @@ const Portfolio = () => {
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
+        </Section>
+
+        <Section delay={0.2}>
+          <List mt={4}>
+            <ListItem>
+              <Badge colorScheme="whatsapp">Website</Badge> <a href="https://www.apadilla.ca/">https://www.apadilla.ca/</a>
+            </ListItem>
+            <ListItem>
+              <Badge colorScheme="whatsapp">Platform</Badge>
+              Any mobile browser
+            </ListItem>
+            <ListItem>
+              <Badge colorScheme="whatsapp">Stack</Badge> React, Next.js, Chakra UI, Framer Motion
+            </ListItem>
+          </List>
         </Section>
       </Container>
     </Layout>

@@ -32,9 +32,7 @@ const Projects = () => {
               title="Web Database"
               thumbnail={DBLoginPic}
             >
-              A web application that tracks inventory, clients, orders, and employee's stats.
-              <br />
-              <strong>Built using: <br /> Laravel | jQuery | AdminLTE</strong>
+              A web application that tracks donations, inventory, clients, orders, and employee's stats.
             </WorkGridItem>
           </Section>
 
@@ -45,8 +43,6 @@ const Projects = () => {
               thumbnail={PortfolioPic}
             >
               My personal portfolio/blog, which I plan to improve as I learn more about web development.
-              <br />
-              <strong>Built using: <br /> React | NextJS | Chakra UI</strong>
             </WorkGridItem>
           </Section>
         </SimpleGrid>

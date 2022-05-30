@@ -38,17 +38,31 @@ const Database = () => {
         </Section>
 
         <Section delay={0.2}>
-          <List>
+          <Paragraph>
+            This web database application was built to replace an older Microsoft Access database, that was severely outdated, and could no longer be updated.
+          </Paragraph>
+          <Paragraph>
+            Development at the start of this project took me quite a bit of time to get started, as I had to re-learn how to use PHP, and to research all sorts of security vulnerabilities.
+            All of this research was needed as I initially was making my own framework for this database, but later I transitioned over to Laravel.
+          </Paragraph>
+          <Paragraph>
+            Gradually I improved my abilities with Laravel, and it's Eloquent model, quickly adding features, fixing bugs and adding in quality of life improvements everyday.
+          </Paragraph>
+          <Paragraph>
+            This application is hosted locally on a Windows Server, where I have created Batch scripts to backup MySQL daily, and to get new versions when I push them.
+          </Paragraph>
+
+          <List mt={4}>
             <ListItem>
               <Badge colorScheme="whatsapp">Website</Badge> Internal Application
             </ListItem>
             <ListItem>
-              <Badge colorScheme="whatsapp">Platform</Badge>{" "}
+              <Badge colorScheme="whatsapp">Platform</Badge>
               Windows/MacOS/Mobile
             </ListItem>
             <ListItem>
-              <Badge colorScheme="whatsapp">Stack</Badge> XAMPP: Laravel,
-              jQuery, AdminLTE, MySQL (phpMyAdmin)
+              <Badge colorScheme="whatsapp">Stack</Badge> Laravel,
+              JavaScript (jQuery), AdminLTE, MySQL (phpMyAdmin)
             </ListItem>
           </List>
         </Section>
