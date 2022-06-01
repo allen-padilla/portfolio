@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import ThemeToggleButton from "./theme-toggle-button";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 const LinkItem = ({ href, path, target, children, ...props }) => {
   const active = path === href;
@@ -79,15 +80,9 @@ const Navbar = (props) => {
             target="_blank"
             href="https://www.linkedin.com/in/allen-padilla/"
             path={path}
+            isExternal
           >
-            LinkedIn
-          </LinkItem>
-          <LinkItem
-            target="_blank"
-            href="https://github.com/allen-padilla/portfolio"
-            path={path}
-          >
-            Source Code
+            LinkedIn <ExternalLinkIcon mx="2px" />
           </LinkItem>
         </Stack>
         <Box flex={1} align="right">
@@ -112,14 +107,7 @@ const Navbar = (props) => {
                   href="https://www.linkedin.com/in/allen-padilla/"
                   target="_blank"
                 >
-                  LinkedIn
-                </MenuItem>
-                <MenuItem
-                  as={Link}
-                  href="https://github.com/allen-padilla/portfolio"
-                  target="_blank"
-                >
-                  Portfolio
+                  LinkedIn <ExternalLinkIcon mx="2px" />
                 </MenuItem>
               </MenuList>
             </Menu>
