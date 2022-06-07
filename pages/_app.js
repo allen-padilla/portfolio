@@ -3,7 +3,7 @@ import Layout from "../components/layouts/main"
 import Fonts from "../components/fonts";
 import theme from "../libs/theme"
 import { AnimatePresence } from "framer-motion";
-
+import './wave.css'
 
 const Website = ({ Component, pageProps, router }) => {
   return (

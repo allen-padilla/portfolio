@@ -15,11 +15,14 @@ import Paragraph from "../components/paragraph";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { BioSection, BioYear } from "../components/bio";
 import { LanguageSection, LanguageOut } from "../components/languages";
+import Wave from '../components/wave'
+
 
 const Page = () => {
   return (
     <Layout >
       <Container>
+        <Wave />
         <Box
           borderRadius="lg"
           bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
