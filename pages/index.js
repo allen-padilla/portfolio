@@ -30,7 +30,7 @@ const Page = () => {
           mt={3}
           mb={6}
           align="center">
-          Hello! I&apos;m a full-stack developer based in Winnipeg, Manitoba! <br />I am currently seeking a new developer position!
+          Hello! I&apos;m a full-stack developer based in Winnipeg, Manitoba! <br />If you'd like to have a chat, contact me on LinkedIn!
         </Box>
         <Section delay={0.3}>
           <Box display={{ md: "flex" }}>
@@ -100,9 +100,15 @@ const Page = () => {
           </BioSection>
           <BioSection>
             <BioYear>
-              2020 - Present
+              2020
             </BioYear>
             Full-stack Developer at Computers for Schools Manitoba
+          </BioSection>
+          <BioSection>
+          <BioYear>
+            2022 - Present
+          </BioYear>
+            IT Support at Manitoba Metis Federation
           </BioSection>
         </Section>
 
