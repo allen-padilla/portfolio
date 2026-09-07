@@ -1,0 +1,40 @@
+## Context
+
+The Manitoba Métis Federation wanted a map for a museum display that people can walk up to and touch. It covers the Red River Métis homeland, so the settlements, wintering camps, and battle sites across what's now Manitoba, Saskatchewan, and Alberta, and how they connected to each other. A flat map with pins just didn't feel right for a museum. I wanted it to feel like you're following their actual movement around the country.
+
+I built it with Three.js in TypeScript. Right now it's a working prototype with 14 places loaded and a build that's ready for the display. The content is still being written.
+
+<Video src="/projects/homeland-map/st-albert-loop.mp4" poster="/projects/homeland-map/st-albert-loop-poster.jpg" width={1280} height={800} label="The map camera slowly orbiting St. Albert with its connections and info panel showing" caption="St. Albert selected, one full orbit, with the connections and the write-up in place. Recorded from the app at twice the real speed." />
+
+<Figure src="/projects/homeland-map/overview.jpg" alt="3D relief map of Canada in sepia with labelled Red River Métis places across the prairies" width={1600} height={1000} caption="The home view. Canada is extruded and shaded from real elevation data, toned sepia, with each place labelled." />
+
+## Problem
+
+A kiosk is a different thing from a website.
+
+- No keyboard, no mouse, no instructions. Everything has to work with one or two fingers and be obvious the first time.
+- It runs unattended all day. If it freezes, nobody is there to reload it.
+- Staff need to add places and pictures over time without me.
+- It has to look like an artifact and not a web page. Museum lighting, a big screen, and people standing a metre away.
+
+## Approach
+
+<Stack items={["Three.js", "TypeScript", "d3-geo", "Vite", "Express", "SQLite", "Docker"]} />
+
+**The terrain.** Canada's outline comes from Natural Earth through world-atlas. I project it with d3-geo and extrude it into a solid slab. Elevation comes from GMTED2010 tiles and Natural Earth's shaded relief, which a few scripts turn into a height map, a mask, and a relief texture. A post-processing pass adds the sepia and a vignette so it reads like an old map instead of a game.
+
+**The camera.** Tap a place and the camera flies to it, tilts, and starts a slow orbit. Its connections draw in as great-circle arcs labelled with the distance in km, and a panel slides in with the write-up and pictures. Grab the map and the orbit stops. Reset view flies you home.
+
+<Figure src="/projects/homeland-map/batoche.jpg" alt="Batoche selected on the map, with lines to five connected places labelled by distance and an info panel" width={1600} height={1000} caption="Batoche selected. Five connections drawn as great-circle arcs with distances, and the write-up on the right." />
+
+**Touch.** One finger pans, pinch zooms toward your fingers, and two fingers rotate. A two-finger rotate always has a bit of accidental pinch in it, so zoom waits behind a small dead zone until your fingers really spread or squeeze. Places like Rooster Town, Frog Plains, and Grantown sit so close together you can't tap one, so markers that would overlap fold into one cluster pin with a count and split apart as you zoom in.
+
+**The data.** Places live in SQLite behind a small Express server, using Node's built-in driver so there's nothing native to compile on the kiosk. A password-protected admin page manages places, their connections, and pictures, and makes thumbnails on upload.
+
+<Figure src="/projects/homeland-map/admin.png" alt="Admin page listing the places with a form for editing one" width={1600} height={1000} caption="The admin. Every place has a write-up, coordinates, connections, and a picture gallery, all editable by staff." />
+
+**Running it.** One Docker image builds the map and runs the server. The database and uploads are mounted as volumes so they survive a redeploy. On the kiosk it runs under a process manager that brings it back after a crash or a reboot.
+
+## Outcome
+
+The prototype does the whole loop today on both mouse and touch. Fly in, orbit, connections, panel, reset. What's left is content, more places and pictures from the people who know the history, and then the install on the museum floor.

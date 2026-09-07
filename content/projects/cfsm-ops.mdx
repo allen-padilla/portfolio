@@ -1,0 +1,69 @@
+## Context
+
+Computers For Schools Manitoba takes in donated computers, refurbishes them, and gets them into schools and community organizations. When I started in 2020, all of that ran through an old Microsoft Access database that could hardly be updated anymore.
+
+This was my first real project. I started with a plain PHP app to replace it, but as I learned more about application security I felt it needed a proper framework, so I moved it to Laravel. I'd never used it before. The Executive Director saw what it could do, and it grew into a full app used across every Manitoba location.
+
+<Callout title="About the screenshots">
+  <p>Every screenshot on this page is from a test environment I set up for demos. The records are empty or made up, and no real donor, client, or inventory data is shown.</p>
+</Callout>
+
+<Figure src="/projects/cfsm-ops/home.png" alt="DatabaseWEB home dashboard with weekly cataloguing and production counts" width={1922} height={1080} caption="The home dashboard in the test environment. Weekly counts for cataloguing, pre-production, and orders, with a leaderboard so staff could see how their week compared." />
+
+## Problem
+
+10 operational areas, each with its own workflow and its own people.
+
+- Donation intake and donor records
+- Asset tracking for donated equipment, with custom material attributes and subtypes
+- Stock transfers between locations, with a full history for chain of custody
+- Client records, orders, tax and payment handling, and order assignment
+- RMAs and returns
+- Received shipments and recycling loads, with regulatory reporting
+
+The people doing the work needed to see just their part. Leadership needed reporting across all of it.
+
+## Approach
+
+<Stack items={["Laravel 8", "MySQL", "Blade", "mPDF"]} />
+
+**Built with the people using it.** I got requirements straight from the Executive Director and the warehouse, refurb, and admin staff. I modelled each department's workflow with the people who actually did that work, and kept adjusting as they used it.
+
+**Asset tracking.** Every piece of donated equipment gets its own record with custom attributes and subtypes. Stock transfers between locations are logged with a full history, so each item has a chain of custody.
+
+<Figure src="/projects/cfsm-ops/donations.png" alt="Cataloguing a material from a donation load" width={1924} height={1042} caption="Cataloguing one item out of a donation load. Storage devices get attached to the material so they can be tracked and wiped separately." />
+
+<Figure src="/projects/cfsm-ops/materials.png" alt="Material lookup with a computer's details open" width={1924} height={1042} caption="Material lookup. Each item has its own record with specs, storage, pre-production status, history, and its current location." />
+
+**Orders.** Client records, tax and payments, order assignment, file attachments, CSV bulk import, and PDF invoices with mPDF.
+
+<Figure src="/projects/cfsm-ops/orders.png" alt="Viewing an order with its product counts and print options" width={1924} height={1042} caption="An order in production. Product counts on the left, the products themselves on the right, and one-click printing for labels, contents, and the order sheet." />
+
+**Access.** I wrote the role and permission layer from scratch, so admins, supervisors, and floor staff each only see the modules that matter to them.
+
+**RMAs and recycling.** Returns go through their own RMA flow. Received shipments get logged as a whole, then broken down item by item, so one shipment of recycled equipment can have hundreds of entries and still trace back to where it came from.
+
+<Figure src="/projects/cfsm-ops/rma.png" alt="New RMA form" width={1924} height={1042} caption="Opening an RMA. The material, the reported problem, who brought it in, whether data needs recovering, and a checklist of what came with it." />
+
+**Reporting and feedback.** Quarterly and annual dashboards, plus an in-app issue reporter so staff could flag problems without leaving the system.
+
+**Hosting.** It ran on a Windows Server on site. I wrote batch scripts to back up MySQL every day and pull new versions whenever I pushed them.
+
+## Scale
+
+The last time I had to dig into the backend, this is roughly what it was holding.
+
+| | |
+|---|---|
+| Inventory records | 100,000+ |
+| Orders, RMAs, and received shipments | Thousands |
+| Recycled equipment entries per shipment | Hundreds |
+| Database tables | 46 |
+| Controllers | 41 |
+| Views | 100+ |
+| Operational areas | 10 |
+| Commits | 471 |
+
+## Outcome
+
+It's the system the organization still runs on for donations, inventory, warehousing, orders, returns, and recycling. It passed 100,000 records while I was there. After I moved to my next job I kept supporting it on contract until August 2024, shipping new reports and dashboard tweaks whenever they needed them.

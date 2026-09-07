@@ -1,0 +1,44 @@
+## Context
+
+Louis Riel College, one of the Manitoba Métis Federation's affiliates, holds a graduation every year. Gowns go out beforehand and have to come back after, and during the ceremony someone has to get each graduate's name and program on the projector at the right moment.
+
+The college asked IT for help, so I built the app that tracks the gowns and runs the projector, and I ran it on the night. It's SvelteKit with Convex behind it. Two years in a row now, 2025 and 2026.
+
+<Callout title="About the screenshots">
+  <p>These are from a local copy of the app running on made-up graduates. No real student names or numbers appear, and the roster on the import page is blurred.</p>
+</Callout>
+
+<Figure src="/projects/graduation-portal/projector-graduate.png" alt="Projector screen showing a graduate's name and department after their card was scanned" width={1920} height={1080} caption="The projector the moment a card is scanned at the stage. The graduate's name and program, big enough for the back row." />
+
+## Problem
+
+Two things could go wrong, and both had before.
+
+- **Gowns went missing.** Without a record of who took which size, there was no way to know what was still out after the event.
+- **The ceremony could stall.** You can't count on venue Wi-Fi. If the projector needs a live connection, one dropout stops the ceremony in front of a few hundred people.
+
+## Approach
+
+<Stack items={["SvelteKit", "Convex", "Service Worker", "Barcode scanning"]} />
+
+**Gown check-out and check-in.** Staff scan a student's card. That records the gown size going out and marks it returned when it comes back, so at the end of the night every gown is accounted for.
+
+<Figure src="/projects/graduation-portal/gown-rented.png" alt="Gown rental screen with a student's record, gown size, and a return gown button" width={1400} height={800} caption="Gown check-out. Scan a card, pick the size, and one big button toggles between rented and returned." />
+
+**Getting the list in.** The college sends the graduate list as a CSV. The import page takes the file, lets staff add or remove someone by hand, and exports the current list back out.
+
+<Figure src="/projects/graduation-portal/roster.png" alt="Import and export page with a CSV import, an add student form, and the graduate table" width={1400} height={1300} caption="The import page. Add a graduate, import the CSV, export it back, and see the current list with gown status. The roster is blurred." />
+
+**The stage station.** A second scanner runs the ceremony. As each student walks up, one scan puts their name and program on the projector. No typing, no searching.
+
+<Figure src="/projects/graduation-portal/projector-idle.png" alt="Projector idle screen reading LRC Graduation, scan student ID" width={1920} height={1080} caption="The idle screen between graduates. The station listens for the scanner, so nobody has to click into a field." />
+
+**Works offline.** The stage station pulls the full graduate list into the browser whenever it's online and looks every scan up from that local copy, so if the venue connection drops mid-ceremony the projector keeps going. A service worker keeps the app itself loaded. Gown check-out needs a connection, but that happens before the event, not during it.
+
+**Access control.** Every station is locked behind an access code that the Convex backend checks on every call, so a laptop left open on a table can't change anything.
+
+<Figure src="/projects/graduation-portal/lock.png" alt="Access code prompt shown before any page of the app" width={1400} height={520} caption="The lock screen. The code is checked server-side, not just hidden in the page." />
+
+## Outcome
+
+Both ceremonies ran on it start to finish. Over 150 graduates went through it across the 2 nights, and every gown came back.

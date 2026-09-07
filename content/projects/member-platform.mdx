@@ -1,0 +1,45 @@
+## Context
+
+One of the departments at the Manitoba Métis Federation had over 2,000 members, their regional locals, and the events they run, and all of it lived in different tools and spreadsheets. The public website kept its own copy of the member data too, so someone was always typing the same thing twice.
+
+I'm in the IT department, but I built this for them. I sat with the people who'd be using it every day and worked from there.
+
+<Callout title="About the screenshots">
+  <p>These are from a local copy of the app seeded with generated data. Every name, citizen number, and contact detail is made up, and they're blurred anyway. The department's name is blurred too, since this page keeps it general.</p>
+</Callout>
+
+<Figure src="/projects/member-platform/dashboard.png" alt="Dashboard with the next event, member totals, and new-member counts by month, quarter, and fiscal year" width={1600} height={1000} caption="The dashboard. The next event, member totals, and new members by month, quarter, and fiscal year, each one a link into the members list pre-filtered to that period." />
+
+## Problem
+
+I needed three things to be true at once.
+
+- Member records needed a real history. Staff had to see what changed and when, and get a heads-up on the changes that mattered.
+- Access had to follow the work accounts people already had. A separate list of users in the app would be out of date within a month.
+- The website needed live member data without anyone re-typing it.
+
+## Approach
+
+<Stack items={["Laravel 13", "Inertia", "React 19", "PostgreSQL", "Azure AD", "OAuth2"]} />
+
+It's Laravel 13 with Inertia and React 19 on the front, and PostgreSQL underneath.
+
+**Sign-in.** Azure AD handles login. Directory groups map straight to roles in the app, so when someone changes teams, their access changes with them. Nobody has to remember to update a list.
+
+**Members and events.** Member records track changes and raise alerts. Regional locals are their own thing, not just a text field. An event has registrations, guests, and a scan-in at the door, so the person at the door sees the same record the office does.
+
+<Figure src="/projects/member-platform/members-list.png" alt="Members list with filters for citizenship, verification, and pending updates, names blurred" width={1600} height={1120} caption="The members list. Filters for citizenship, verification, and pending updates sit right above the table." />
+
+**Re-registrations.** When a member re-registers on the website with different details, the record doesn't just update. Each changed field gets queued as an alert with the new value beside the current one, and staff accept or dismiss them one at a time. A verified member drops to pending review while alerts are open and goes back to verified once they're cleared.
+
+<Figure src="/projects/member-platform/member-detail.png" alt="Member detail panel showing a re-registration alert with the submitted value beside the current one" width={1600} height={1000} caption="A re-registration with a new email. The submitted value sits beside the current one, with accept and dismiss per field." />
+
+<Figure src="/projects/member-platform/event-day.png" alt="Event page with attendance counts, an on-site tally, and the registration list, names blurred" width={1600} height={1150} caption="An event on the day. Interested, attended, and an on-site count that resets each morning on local time, so a multi-day event starts every day at zero." />
+
+<Figure src="/projects/member-platform/events.png" alt="Events list with upcoming and completed counts and a quick scan button for the next event" width={1600} height={1000} caption="The events list. Quick scan and directions for the next event are one tap away, which matters on a phone at the door." />
+
+**The website.** An OAuth2 API gives the public site its member data, so it reads from the platform instead of keeping its own copy.
+
+## Outcome
+
+This is the department's system of record now. Over 2,000 member records and every event since it launched. Staff sign in with their work accounts instead of a separate user list, and the website stays in sync on its own. I still deploy and support it on our self-hosted setup.

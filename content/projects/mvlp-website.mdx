@@ -1,0 +1,47 @@
+## Context
+
+The Métis Veterans Legacy Program recognizes Métis Veterans who served in the Second World War. It runs two things, a one-time recognition payment for veterans and their families, and a commemoration program that funds projects honouring them. The website is how families find out they qualify and how communities see what the program does.
+
+The old site was on WordPress, and every change went through someone who knew WordPress. The program wanted to post news, add recipient profiles, and put up commemoration projects on their own, and they wanted it to look like it was made this decade. I'm the developer in the Manitoba Métis Federation's IT department, so it came to me.
+
+<Callout title="About the screenshots">
+  <p>The site is running on a staging domain until it moves to its permanent home. Every photo and every recipient's name in these screenshots is blurred, because they show real veterans, their families, and program leadership.</p>
+</Callout>
+
+<Figure src="/projects/mvlp/home.jpg" alt="Home page hero of the Métis Veterans Legacy Program website, with photos blurred" width={1600} height={1000} caption="The home page. Dark hero, a couple of program numbers, and the two calls to action that matter, apply, or learn about the commemoration program." />
+
+## Problem
+
+Three kinds of content, three different shapes.
+
+- News articles with a header image, an author, a category, and a body someone non-technical has to be able to write.
+- Recipient profiles, with the veteran's name, a bio, a list of survivors and beneficiaries, and photos from the ceremony.
+- Commemoration projects, with a title, a banner, project photos, a summary, and whatever extra the funded group wants to add.
+
+The static pages about eligibility, how to apply, and the commission could stay in code. Everything that changes month to month had to be editable by staff, with drafts, and without me.
+
+## Approach
+
+<Stack items={["Next.js 16", "React 19", "Strapi 5", "TipTap", "Tailwind 4", "Motion"]} />
+
+I split it in two, a Strapi 5 backend that holds the content, and a Next.js 16 front end that reads from it.
+
+**The CMS.** Four collection types, articles, categories, commemoration programs, and recognition payments. Articles, programs, and recipients all have draft and publish, so staff can get something ready and put it live later. Rich text uses a TipTap editor plugin instead of Strapi's default, with one preset that gives staff headings, lists, links, alignment, and the media library, and nothing else to get lost in. A seed script sets up public read permissions and sample content on first start, so a fresh environment is ready to demo.
+
+<Figure src="/projects/mvlp/recipients.jpg" alt="Grid of recognition payment recipient cards pulled from the CMS, with photos and names blurred" width={1600} height={880} caption="Recognition payment recipients. Each card is a CMS entry with its own page, bio, and ceremony gallery. Names and photos are blurred here." />
+
+**Rendering rich text.** The editor stores documents as ProseMirror JSON. I wrote a small renderer that turns that into HTML on the server with no DOM dependency, then runs it through DOMPurify before it hits the page. Paragraphs, headings, lists, links, alignment, and marks are all handled explicitly, so what staff see in the editor is what shows up.
+
+**The front end.** Next.js with the App Router, server components fetching from Strapi, and dynamic routes for each article, recipient, and project. Strapi relations are populated by name rather than with a wildcard, because a wildcard populate breaks on custom fields. Header images come from Strapi when there is one and fall back to a local placeholder keyed by the slug, so a card is never empty.
+
+<Figure src="/projects/mvlp/programs.jpg" alt="Program cards on the home page linking to the Commemoration Program and Recognition Payment" width={1600} height={1000} caption="The two programs the site exists to explain, right below the hero." />
+
+**Design.** Dark hero sections, a light body, cards with soft borders, and a little motion on scroll, counters that count up, sections that fade in. I wanted it to feel like the program's printed material without copying it. The commission page gives each commissioner a full profile with a portrait, and the eligibility page puts the rules on three cards instead of a wall of text, so a family can actually scan them.
+
+<Figure src="/projects/mvlp/commissioners.jpg" alt="The Commission page with a commissioner's profile card, portrait and text blurred" width={1600} height={960} caption="The Commission page. Each commissioner gets a full profile. Portraits, names, and bios are blurred." />
+
+<Figure src="/projects/mvlp/eligibility.jpg" alt="Recognition payment eligibility cards for veterans, spouses, and children" width={1600} height={1100} caption="Eligibility rules as three cards, the veteran, a surviving spouse or partner, and children." />
+
+## Outcome
+
+It's live on a staging domain with real content, over a dozen recipient profiles that program staff published themselves through the CMS, the commission, and both program pages. It moves to its permanent domain when the program is ready to announce it. Staff can post a news story or add a recipient without asking me.
