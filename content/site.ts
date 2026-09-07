@@ -22,14 +22,16 @@ export const site = {
   location: "Winnipeg, MB",
   url: resolveSiteUrl(),
   description:
-    "Hey, I'm Allen, a full-stack developer in Winnipeg who builds things people enjoy using. I build software for the people who run on it and see it through to production.",
+    "Hey, I'm Allen, a full-stack developer in Winnipeg. I build the apps an organization runs on and see them through to production. Open to remote roles or relocating.",
   email: "allenjpadilla@gmail.com",
   hero: {
-    lead: "Hey, I'm Allen, a full-stack developer who builds things people",
-    italic: "enjoy",
-    tail: " using.",
+    lead: "Hey, I'm Allen, a full-stack developer. I build the apps an organization",
+    italic: "runs on",
+    tail: " and see them through to production.",
+    sub: "Right now that's the Manitoba Métis Federation, where I'm the only developer. I'm in Winnipeg and open to remote roles or relocating for the right one.",
   },
   resume: RESUME_PATH,
+  repo: "https://github.com/allen-padilla/portfolio",
   socials: [
     { label: "GitHub", href: "https://github.com/allen-padilla" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/allen-padilla/" },
@@ -37,9 +39,9 @@ export const site = {
     { label: "Resume", href: RESUME_PATH },
   ] satisfies SocialLink[],
   aboutMe: [
-    "I've been coding since I was 7, making games in an old program called BYOND. I took web development at Red River College, and my first real job was at Computers For Schools Manitoba, where I built their database app from scratch. It started as my own little PHP framework and grew into a Laravel app the whole organization ran on.",
+    "I've been coding since I was 7, making games in an old program called BYOND. I took web development at Red River College, and my first developer job was at Computers For Schools Manitoba, where I built their database app from scratch. It started as my own little PHP framework and grew into a Laravel app the whole organization ran on, and I kept supporting it on contract for 2 years after I left.",
     "Right now I'm the only developer in the Manitoba Métis Federation's IT department, building apps for the other departments. I sit down with the directors and the frontline staff to figure out what they actually need, then I do the architecture, the build, the tests, the deploy, and the support after. I run the infrastructure too. Coolify on a VPS, Docker Compose, nginx, and firewall rules so the internal apps stay internal.",
-    "A lot of my day is spent with coding agents now. They dig through the codebase, plan and make changes, refactor, run the checks, and write the docs. I set the context and the guardrails and I review every change, so the architecture and what goes to production is still on me.",
+    "A lot of my day is spent with coding agents now. They dig through the codebase, plan and make changes, run the checks, and write the docs. My job is the context and the guardrails, and I review every change before it goes anywhere, so the architecture and what reaches production is still on me. This site's repo is a fair example. It has an agents file with the conventions and the things that already bit me, commits are conventional and linted, and any logic that could break has a test next to it.",
     "Outside of work I travel whenever I can, and I'm always looking for a good bowl of ramen.",
   ],
 };

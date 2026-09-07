@@ -35,6 +35,14 @@ A kiosk is a different thing from a website.
 
 **Running it.** One Docker image builds the map and runs the server. The database and uploads are mounted as volumes so they survive a redeploy. On the kiosk it runs under a process manager that brings it back after a crash or a reboot.
 
+## Decisions
+
+- Extruded, shaded relief instead of a flat map with pins, since a flat map just didn't feel right for a museum.
+- Places live in SQLite behind Express using Node's built-in driver, so there's nothing native to compile on the kiosk.
+- Zoom waits behind a small dead zone during a two-finger rotate, since a rotate always has a bit of accidental pinch in it.
+- Markers that would overlap fold into one cluster pin and split apart as you zoom in, so places like Rooster Town, Frog Plains, and Grantown stay tappable.
+- One Docker image, with the database and uploads as volumes so they survive a redeploy, and a process manager that brings it back after a crash.
+
 ## Outcome
 
 The prototype does the whole loop today on both mouse and touch. Fly in, orbit, connections, panel, reset. What's left is content, more places and pictures from the people who know the history, and then the install on the museum floor.

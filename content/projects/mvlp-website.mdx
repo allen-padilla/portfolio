@@ -42,6 +42,15 @@ I split it in two, a Strapi 5 backend that holds the content, and a Next.js 16 f
 
 <Figure src="/projects/mvlp/eligibility.jpg" alt="Recognition payment eligibility cards for veterans, spouses, and children" width={1600} height={1100} caption="Eligibility rules as three cards, the veteran, a surviving spouse or partner, and children." />
 
+## Decisions
+
+- Only the content that changes month to month went into Strapi. Eligibility, how to apply, and the commission stayed in code.
+- Rich text is a TipTap plugin with one preset instead of Strapi's default editor, so staff get headings, lists, links, alignment, and the media library, and nothing else to get lost in.
+- The editor's ProseMirror JSON is turned into HTML on the server by a small renderer with no DOM dependency, then run through DOMPurify, so what staff see in the editor is what shows up.
+- Relations are populated by name instead of a wildcard, because a wildcard populate breaks on custom fields.
+- A card with no header image falls back to a local placeholder keyed by the slug, so a card is never empty.
+- A seed script sets public read permissions and sample content on first start, so a fresh environment is ready to demo.
+
 ## Outcome
 
 It's live on a staging domain with real content, over a dozen recipient profiles that program staff published themselves through the CMS, the commission, and both program pages. It moves to its permanent domain when the program is ready to announce it. Staff can post a news story or add a recipient without asking me.

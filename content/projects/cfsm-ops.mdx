@@ -49,6 +49,14 @@ The people doing the work needed to see just their part. Leadership needed repor
 
 **Hosting.** It ran on a Windows Server on site. I wrote batch scripts to back up MySQL every day and pull new versions whenever I pushed them.
 
+## Decisions
+
+- It started as plain PHP and moved to Laravel once I'd learned enough about application security to want a proper framework behind it.
+- Storage devices are attached to a material instead of being part of it, so a drive can be tracked and wiped on its own.
+- A received shipment is logged as a whole and then broken down item by item, so hundreds of recycled entries still trace back to one load.
+- The role and permission layer is written for this app, so admins, supervisors, and floor staff each see only their modules.
+- It ran on a Windows Server on site, with batch scripts for the daily MySQL backup and for pulling each new version.
+
 ## Scale
 
 The last time I had to dig into the backend, this is roughly what it was holding.

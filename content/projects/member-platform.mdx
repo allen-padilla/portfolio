@@ -40,6 +40,14 @@ It's Laravel 13 with Inertia and React 19 on the front, and PostgreSQL underneat
 
 **The website.** An OAuth2 API gives the public site its member data, so it reads from the platform instead of keeping its own copy.
 
+## Decisions
+
+- Azure AD groups map straight to roles instead of a user list inside the app, so access changes when someone changes teams and nothing goes stale.
+- A re-registration never overwrites the record. Each changed field becomes an alert with the new value beside the current one, and the member sits in pending review until staff clear them.
+- Regional locals are their own records, not a text field on the member.
+- The public website reads members through an OAuth2 API instead of keeping its own copy, so nobody types the same thing twice.
+- The on-site count resets each morning on local time, so a multi-day event starts every day at zero.
+
 ## Outcome
 
 This is the department's system of record now. Over 2,000 member records and every event since it launched. Staff sign in with their work accounts instead of a separate user list, and the website stays in sync on its own. I still deploy and support it on our self-hosted setup.

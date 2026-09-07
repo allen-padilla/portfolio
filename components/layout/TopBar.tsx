@@ -19,6 +19,9 @@ export function TopBar() {
           <Link href="/#work" className={`${item} border-b-2 border-accent text-ink`}>
             Work
           </Link>
+          <Link href="/#about" className={`${item} border-b-2 border-transparent text-muted hover:text-ink`}>
+            About
+          </Link>
           <a href={site.resume} target="_blank" rel="noreferrer" className={`${item} border-b-2 border-transparent text-muted hover:text-ink`}>
             Resume
           </a>

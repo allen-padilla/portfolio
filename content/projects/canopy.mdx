@@ -46,6 +46,15 @@ Expo and React Native in TypeScript, with SQLite for the private ideas and Supab
 
 **Testing.** Vitest unit tests, an RLS suite with 67 checks, sync and pipeline integration tests, and the AI red-team suite.
 
+## Decisions
+
+- Private ideas live in SQLite on the phone and only released ones go to Supabase, so the notebook works with no account and in airplane mode.
+- Sync is last write wins. When two edits really collide it keeps a conflicted copy instead of throwing one away.
+- One router sits in front of Gemini, Anthropic, and OpenAI instead of betting on one provider, so an outage doesn't take scoring down. Each score takes a credit atomically and gives it back if the call fails.
+- Moderation fails closed. If the check can't run, the idea stays private.
+- The verified stamp is only ever set on the server and the GitHub tokens stay in Supabase Vault, so the app can't grant it to itself.
+- Per-device quotas outlive the account, so deleting it and starting over doesn't reset them.
+
 ## What's next
 
 Getting it on the App Store and Google Play, and getting my CRA business account set up on the Apple side.

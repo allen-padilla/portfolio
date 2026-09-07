@@ -39,6 +39,14 @@ Two things could go wrong, and both had before.
 
 <Figure src="/projects/graduation-portal/lock.png" alt="Access code prompt shown before any page of the app" width={1400} height={520} caption="The lock screen. The code is checked server-side, not just hidden in the page." />
 
+## Decisions
+
+- The stage station looks every scan up from a local copy of the list instead of asking the backend, so a Wi-Fi drop mid-ceremony doesn't stop the projector. A service worker keeps the app itself loaded.
+- Gown check-out still needs a connection. That happens before the event, not during it, so it wasn't worth making offline.
+- The access code is checked by the Convex backend on every call, not just hidden in the page.
+- The roster comes in as a CSV and goes back out the same way, since that's what the college already sends.
+- The station listens for the scanner on its own, so nobody has to click into a field between graduates.
+
 ## Outcome
 
 Both ceremonies ran on it start to finish. Over 150 graduates went through it across the 2 nights, and every gown came back.
