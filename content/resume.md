@@ -31,6 +31,9 @@ Winnipeg, MB | August 2020 – June 2022, then part-time contract to August 2024
 - Moderation fails closed with crisis routing. Prompts are hardened against injection and covered by a red-team suite, and a circuit breaker with daily caps keeps a bug from running up the bill.
 - Private ideas stay in SQLite on the phone. Sync uses cursors and server-time watermarks, last write wins with a conflicted copy on a real collision. Postgres RLS covered by a 67-check suite.
 
+### Meridian | Guild operations portal with Pest tests and CI, source at github.com/allen-padilla/Meridian
+Laravel, Inertia, React, and TypeScript, the same stack as the confidential member platform.
+
 ### apadilla.ca | Personal site, source at github.com/allen-padilla/portfolio
 Next.js, React, Tailwind, and MDX on Vercel, with an agents file, conventional commits, and Vitest tests.
 
