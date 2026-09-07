@@ -27,7 +27,7 @@ MDX components: `<Stack items={[...]} />`, `<Figure src alt width height caption
 ## Assets
 
 - Resume PDF and docx at `public/resume/`, built from `content/resume.md`. The PDF is printed by headless Chrome and is what the nav and footer link.
-- Project images under `public/projects/<slug>/`, referenced from `images` in `content/projects.ts`. Every project gets a card in the home page work grid. `components/home/WorkGrid.tsx` picks an animated card by slug and falls back to the first image.
+- Project images under `public/projects/<slug>/`, referenced from `images` in `content/projects.ts`. Projects with a case study get a card in the home page work grid, and an entry with an `external` link only shows in the ledger at `/projects`. `components/home/WorkGrid.tsx` picks an animated card by slug and falls back to the first image.
 - `assets/og/` holds the fonts for the Open Graph images. They're OFL licensed.
 
 ## Deploy

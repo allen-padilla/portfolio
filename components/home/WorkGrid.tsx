@@ -45,6 +45,7 @@ function Card({ project }: { project: Project }) {
   );
 }
 
+/** The home page grid. Only case-study projects come through here; link-outs live in the ledger at /projects. */
 export function WorkGrid({ projects }: Props) {
   return (
     <section id="work" className="scroll-mt-24">
@@ -63,7 +64,6 @@ export function WorkGrid({ projects }: Props) {
                 <ViewTransition name={`project-title-${p.slug}`} share="morph" default="none">
                   <span className="font-serif text-title text-ink transition-colors group-hover:text-accent">
                     {p.title}
-                    {p.external ? <span aria-hidden="true"> ↗</span> : null}
                   </span>
                 </ViewTransition>
                 <span className="label-sm sm:shrink-0 sm:text-right">{eyebrow(p)}</span>
@@ -80,15 +80,9 @@ export function WorkGrid({ projects }: Props) {
           );
           return (
             <FadeIn key={p.slug} as="li" index={i + 1}>
-              {p.external ? (
-                <a href={p.external} target="_blank" rel="noreferrer" className="group block no-underline">
-                  {inner}
-                </a>
-              ) : (
-                <Link href={`/projects/${p.slug}`} className="group block no-underline">
-                  {inner}
-                </Link>
-              )}
+              <Link href={`/projects/${p.slug}`} className="group block no-underline">
+                {inner}
+              </Link>
             </FadeIn>
           );
         })}

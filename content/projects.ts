@@ -226,4 +226,15 @@ export const projects: Project[] = [
     timeline: "Started 2026, working prototype",
     team: "Solo",
   },
+  {
+    slug: "meridian",
+    title: "Meridian",
+    org: "Personal",
+    year: "2026",
+    status: "In progress",
+    external: "https://github.com/allen-padilla/Meridian",
+    stack: ["Laravel 13", "Inertia", "React 19", "TypeScript", "Tailwind 4", "Pest"],
+    summary:
+      "An operations portal for a fictional adventurers' guild, on the same stack as the member platform. The fantasy is only the vocabulary. Underneath it's a directory people trust, changes that get reviewed, and check-in on a phone, with Pest tests and CI. The source is public and it runs locally on SQLite.",
+  },
 ];
