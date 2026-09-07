@@ -4,13 +4,11 @@ const RESUME_PATH = "/resume/Allen-Padilla-Resume.pdf";
 
 /**
  * Site origin for canonical links, the sitemap, and OG image URLs.
- * Order: NEXT_PUBLIC_SITE_URL, then COOLIFY_URL (Coolify injects it from the
- * app's domain at build time), then the default. Empty strings count as unset
- * (Docker ARG/ENV pass "" when no value is given), a missing scheme gets
- * https://, and trailing slashes are dropped.
+ * NEXT_PUBLIC_SITE_URL wins when set, otherwise the production domain. A missing
+ * scheme gets https:// and trailing slashes are dropped.
  */
 function resolveSiteUrl(): string {
-  const raw = (process.env.NEXT_PUBLIC_SITE_URL || process.env.COOLIFY_URL || "https://apadilla.ca").trim();
+  const raw = (process.env.NEXT_PUBLIC_SITE_URL || "https://apadilla.ca").trim();
   const withScheme = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
   return withScheme.replace(/\/+$/, "");
 }

@@ -1,6 +1,6 @@
 # apadilla.ca
 
-My personal site. Next.js 16 with the App Router, React 19, Tailwind 4, and MDX. Every route is prerendered and it ships as a standalone Node server in Docker.
+My personal site. Next.js 16 with the App Router, React 19, Tailwind 4, and MDX. Every route is prerendered and it deploys on Vercel.
 
 ## Run
 
@@ -31,9 +31,4 @@ MDX components: `<Stack items={[...]} />`, `<Figure src alt width height caption
 
 ## Deploy
 
-The Dockerfile is a multi-stage build with `output: "standalone"`. The site URL for canonical links, the sitemap, and OG images comes from `NEXT_PUBLIC_SITE_URL` if set, then `COOLIFY_URL`, which Coolify injects at build time, then `https://apadilla.ca`. On Coolify nothing needs setting.
-
-```bash
-docker build --build-arg NEXT_PUBLIC_SITE_URL=https://example.com -t portfolio .
-docker run -p 3000:3000 portfolio
-```
+Vercel builds and deploys every push to `main`. The site URL for canonical links, the sitemap, and OG images is `https://apadilla.ca` unless `NEXT_PUBLIC_SITE_URL` is set in the Vercel project.
