@@ -11,9 +11,9 @@ Six years as the only developer at two organizations, taking each app from requi
 Winnipeg, MB | June 2022 – Present | Only developer in the IT department
 - Built the member management and events platform (Laravel, Inertia, React, PostgreSQL), shipped 2026. System of record for 2,000+ members, their regional locals, and every event the department runs.
 - Wired sign-in to Azure AD with directory groups mapped to app roles, so access changes when someone changes teams. Built the OAuth2 API that feeds member data to the public website so nobody types the same thing twice.
-- Built and ran the graduation ceremony portal (SvelteKit, Convex) for the 2025 and 2026 ceremonies: barcode gown check-out, and a stage scanner that puts each graduate on the projector from a local copy of the roster so a Wi-Fi drop doesn't stop the ceremony. 150+ graduates, every gown came back.
-- Building Homeland Map, a 3D relief map of Canada for a museum kiosk (Three.js, d3-geo, Express, SQLite). Terrain extruded from GMTED2010 elevation data, great-circle connections labelled with distance, marker clustering so nearby places stay tappable, and a pinch dead zone so a two-finger rotate doesn't zoom.
-- Building the public website for the Métis Veterans Legacy Program (Next.js, React, Strapi, TipTap). Staff publish news, recipient profiles, and commemoration projects themselves, with drafts and no developer.
+- Ran both graduation ceremonies on a SvelteKit and Convex portal: barcode gown check-out, and a stage scanner that puts each graduate on the projector from a local copy of the roster so a Wi-Fi drop doesn't stop the ceremony. 150+ graduates, every gown came back.
+- Prototyping Homeland Map, a 3D relief map of Canada for a museum kiosk (Three.js, d3-geo, Express, SQLite). Terrain extruded from GMTED2010 elevation data, great-circle connections labelled with distance, marker clustering so nearby places stay tappable, and a pinch dead zone so a two-finger rotate doesn't zoom.
+- Moving the Métis Veterans Legacy Program's website from WordPress to Next.js and Strapi, so staff publish news, recipient profiles, and commemoration projects themselves, with drafts and no developer.
 - Run the infrastructure, self-hosted Coolify on a VPS, Docker Compose, nginx, and firewall rules so internal apps stay internal, and handle fixes, enhancements, and vulnerabilities across every production app.
 
 ### Full-Stack Developer | Computers For Schools Manitoba
