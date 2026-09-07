@@ -9,8 +9,15 @@ export const experience: Experience[] = [
     url: "https://www.mmf.mb.ca",
   },
   {
-    start: "2020",
+    start: "2022",
     end: "2024",
+    company: "Computers For Schools Manitoba",
+    role: "Contract Full-stack Developer",
+    url: "https://www.c4smb.ca/",
+  },
+  {
+    start: "2020",
+    end: "2022",
     company: "Computers For Schools Manitoba",
     role: "Full-stack Developer",
     url: "https://www.c4smb.ca/",

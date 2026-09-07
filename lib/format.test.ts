@@ -27,8 +27,12 @@ describe("eyebrow", () => {
 describe("experienceYears", () => {
   const base: Experience = { start: "2021", end: "2023", company: "Acme", role: "Dev" };
 
-  it("shows only the start year for a finished role", () => {
-    expect(experienceYears(base)).toBe("2021");
+  it("shows the full range for a finished role", () => {
+    expect(experienceYears(base)).toBe("2021 – 2023");
+  });
+
+  it("shows a single year when a role starts and ends in the same year", () => {
+    expect(experienceYears({ ...base, end: "2021" })).toBe("2021");
   });
 
   it("adds an open dash for the current role", () => {

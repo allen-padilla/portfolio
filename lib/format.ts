@@ -8,9 +8,10 @@ export function eyebrow(project: Project): string {
   return `${project.org} • ${project.status} ${project.year}`;
 }
 
-/** Start year only; the next row's start year implies the end. The current role gets an open dash. */
+/** Full range. The current role gets an open dash, and a role inside one year shows that year once. */
 export function experienceYears(e: Experience): string {
-  return e.end === "now" ? `${e.start} –` : e.start;
+  if (e.end === "now") return `${e.start} –`;
+  return e.start === e.end ? e.start : `${e.start} – ${e.end}`;
 }
 
 export function padIndex(i: number): string {
