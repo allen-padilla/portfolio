@@ -10,16 +10,16 @@ Six years as the only developer at two organizations, taking each app from requi
 ### Web Developer | Manitoba Métis Federation
 Winnipeg, MB | June 2022 – Present | Only developer in the IT department
 - Built the member management and events platform (Laravel, Inertia, React, PostgreSQL), shipped 2026. System of record for 2,000+ members, their regional locals, and every event the department runs.
-- Azure AD sign-in with directory groups mapped to app roles, so access changes when someone changes teams. An OAuth2 API feeds member data to the public website so nobody types the same thing twice.
-- Graduation ceremony portal (SvelteKit, Convex) used at the 2025 and 2026 ceremonies. Gown check-out by barcode, plus a stage scanner that puts each graduate on the projector from a local copy of the roster so a Wi-Fi drop doesn't stop the ceremony. 150+ graduates, every gown came back.
+- Wired sign-in to Azure AD with directory groups mapped to app roles, so access changes when someone changes teams. Built the OAuth2 API that feeds member data to the public website so nobody types the same thing twice.
+- Built and ran the graduation ceremony portal (SvelteKit, Convex) for the 2025 and 2026 ceremonies: barcode gown check-out, and a stage scanner that puts each graduate on the projector from a local copy of the roster so a Wi-Fi drop doesn't stop the ceremony. 150+ graduates, every gown came back.
 - Building Homeland Map, a 3D relief map of Canada for a museum kiosk (Three.js, d3-geo, Express, SQLite). Terrain extruded from GMTED2010 elevation data, great-circle connections labelled with distance, marker clustering so nearby places stay tappable, and a pinch dead zone so a two-finger rotate doesn't zoom.
 - Building the public website for the Métis Veterans Legacy Program (Next.js, React, Strapi, TipTap). Staff publish news, recipient profiles, and commemoration projects themselves, with drafts and no developer.
-- Run the infrastructure: self-hosted Coolify on a VPS, Docker Compose, nginx, and firewall rules so internal apps stay internal. Handle fixes, enhancements, and vulnerabilities across every production app.
+- Run the infrastructure, self-hosted Coolify on a VPS, Docker Compose, nginx, and firewall rules so internal apps stay internal, and handle fixes, enhancements, and vulnerabilities across every production app.
 
 ### Full-Stack Developer | Computers For Schools Manitoba
 Winnipeg, MB | August 2020 – June 2022, then part-time contract to August 2024
 - Replaced the Microsoft Access database with one Laravel app for donations, inventory, warehousing, orders, RMAs, and recycling, modelled with the Executive Director and the warehouse, refurbishment, and admin staff who use it. 100,000+ inventory records, thousands of orders, and it still runs the organization today.
-- Asset tracking with a chain-of-custody history, orders and RMAs with tax, payments, CSV import, and PDF invoices, and a role and permission layer so admins, supervisors, and floor staff each see only their modules.
+- Added asset tracking with a chain-of-custody history, orders and RMAs with tax, payments, CSV import, and PDF invoices, and wrote the role and permission layer so admins, supervisors, and floor staff each see only their modules.
 
 ### IT Service Desk | Royal Canadian Mint | Winnipeg, MB | January 2019 – August 2019
 
