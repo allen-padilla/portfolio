@@ -18,6 +18,7 @@ npm test
 - `content/experience.ts` is the experience ledger on the home page.
 - `content/projects.ts` is the source of truth for every project: title, org, year, status, stack, summary, role, timeline, team, images, and an optional `external` link.
 - `content/projects/<slug>.mdx` is the case study body. Body only, no frontmatter. Only `##` headings show up in the table of contents.
+- `content/resume.md` is the resume, in a small Markdown subset that `node scripts/build-resume.mjs` turns into the PDF and docx under `public/resume/`.
 
 To add a project, add an entry to `content/projects.ts` and create `content/projects/<slug>.mdx`. The build fails if the MDX file is missing.
 
@@ -25,7 +26,7 @@ MDX components: `<Stack items={[...]} />`, `<Figure src alt width height caption
 
 ## Assets
 
-- Resume at `public/resume/Allen-Padilla-Resume.pdf`, linked from the nav and footer.
+- Resume PDF and docx at `public/resume/`, built from `content/resume.md`. The PDF is printed by headless Chrome and is what the nav and footer link.
 - Project images under `public/projects/<slug>/`, referenced from `images` in `content/projects.ts`. Every project gets a card in the home page work grid. `components/home/WorkGrid.tsx` picks an animated card by slug and falls back to the first image.
 - `assets/og/` holds the fonts for the Open Graph images. They're OFL licensed.
 
