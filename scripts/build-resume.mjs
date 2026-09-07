@@ -5,22 +5,24 @@
 // one page.
 //
 //   node scripts/build-resume.mjs
+//   node scripts/build-resume.mjs <source.md> <out dir> <file name>   (a tailored copy, kept out of the repo)
 //
 // Chrome is looked for at the usual macOS path, or set CHROME_BIN.
 
 import { execFileSync } from "node:child_process";
 import { existsSync } from "node:fs";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { dirname, join, relative } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { AlignmentType, BorderStyle, Document, HeadingLevel, LevelFormat, Packer, Paragraph, TextRun } from "docx";
 import { inlineSegments, parseResume, splitEntry } from "../lib/resume.mts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const source = join(root, "content/resume.md");
-const outDir = join(root, "public/resume");
-const basename = "Allen-Padilla-Resume";
+const [sourceArg, outDirArg, basenameArg] = process.argv.slice(2);
+const source = sourceArg ? resolve(sourceArg) : join(root, "content/resume.md");
+const outDir = outDirArg ? resolve(outDirArg) : join(root, "public/resume");
+const basename = basenameArg ?? "Allen-Padilla-Resume";
 const chrome = process.env.CHROME_BIN ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 /** docx sizes are half-points, so 20 is 10pt, and lengths are twips (1440 per inch). */
@@ -206,6 +208,7 @@ async function printPdf(html, pdfPath) {
 }
 
 const blocks = parseResume(await readFile(source, "utf8"));
+await mkdir(outDir, { recursive: true });
 const docxPath = join(outDir, `${basename}.docx`);
 const pdfPath = join(outDir, `${basename}.pdf`);
 await writeFile(docxPath, await buildDocx(blocks));
