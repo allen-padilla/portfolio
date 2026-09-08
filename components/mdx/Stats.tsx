@@ -36,7 +36,7 @@ export function Stats({ items }: Props) {
   }, []);
 
   return (
-    <div ref={ref} className="my-8 grid grid-cols-2 gap-px border border-rule bg-rule sm:grid-cols-4">
+    <div ref={ref} className="my-8 grid grid-cols-2 gap-px border border-rule bg-rule sm:grid-cols-3">
       {items.map((item) => (
         <StatTile key={item.label} {...item} start={started} />
       ))}
