@@ -10,7 +10,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # Project notes
 
-- npm only. Conventional Commits (`type(scope): subject`, imperative, lowercase, no trailing period).
+- npm only. `npm test` runs `vitest run`; colocate `foo.test.ts` next to `foo.ts` (see `lib/*.test.ts`). `npm run lint` runs ESLint.
+- Conventional Commits (`type(scope): subject`, imperative, lowercase, no trailing period).
 - Content model: `content/projects.ts` is the source of truth for project metadata. MDX bodies in `content/projects/<slug>.mdx` are body-only with **no frontmatter**. Only `##` headings become table-of-contents entries; ids come from `github-slugger`, matching `rehype-slug`.
 - `@next/mdx` runs under Turbopack, so remark/rehype plugins in `next.config.ts` must be **string names**, not imported functions.
 - Design tokens live in `app/globals.css` under `@theme`, based on the coolors palette 2b2d42-8d99ae-edf2f4-ef233c-d90429. Use them (`bg-paper`, `bg-paper-2`, `text-ink`, `text-muted`, `text-gray`, `border-rule`, `text-accent`, `text-accent-2`, `font-serif|sans|mono`, `text-display|title|h2|label`) rather than raw hex values. `text-gray` (#8d99ae) fails AA on paper, so use it only for decoration, never for text.
