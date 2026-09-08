@@ -79,3 +79,25 @@ Rough numbers from the last time I checked in on them.
 ## Outcome
 
 It's the system the organization still runs on for donations, inventory, warehousing, orders, returns, and recycling. It passed 100,000 records while I was there. After I moved to my next job I kept supporting it on contract until August 2024, shipping new reports and dashboard tweaks whenever they needed them.
+
+## Retrospective
+
+I went back through the repo before writing this. Here's what I'd change.
+
+**Foreign keys.** There are 46 migrations and not one foreign key. Every `foreignId` column is just an unsigned integer, so nothing in the database stops an order from pointing at a client that was deleted. I'd chain `constrained()` with an `onDelete` rule on every one of them from the first migration, and I'd use Postgres while I was at it. MySQL was what I knew from phpMyAdmin, not a choice.
+
+**Migrations.** Each table was created once and never touched by a migration again, because I was changing columns straight in phpMyAdmin on the server. I'd make every schema change a migration now and check in a schema dump, so the repo is the record of what the database looks like.
+
+**Models.** 49 models and not one relationship on any of them. Every join is a hand-written `DB::table` query in a controller. I'd define the relationships on the models, eager load with `with()`, and let Eloquent do the joins.
+
+**Writes.** Saving an order hits three tables and none of it is in a transaction, so a failure on the second insert leaves an order with no line items. Client numbers like `C-000123` are built by reading the next auto-increment off `SHOW TABLE STATUS` before the insert, so two people opening the form at once get the same number. I'd wrap multi-table writes in `DB::transaction` and format the number from the row's id after the insert.
+
+**Controllers.** `OrderController` is 1,500 lines. Validation is 105 separate `Validator::make` calls spread through the controllers instead of Form Requests, and PDF merges through mPDF run inside the request because the queue driver was `sync`. I'd pull validation into Form Requests, move the slow work into queued jobs, and keep controllers to routing and responses.
+
+**Imports.** The CSV importer reads the whole file into memory, then calls `session_start()` and parks the rows in PHP's own `$_SESSION` between the preview step and the approve step, going around Laravel's session entirely. I didn't know the framework well enough yet to know that was wrong. I'd stage the rows in a table and validate them one at a time.
+
+**Access.** There are three permission systems in the codebase. An `access_level` integer that the middleware checks, a `permits` table the controllers query by name, and `spatie/laravel-permission` installed with its trait on the Employee model but never called. Only the integer gates anything. I'd actually use spatie, write Policies, and delete the other two.
+
+**Schema.** I decoupled a lot of the data model, storage devices off materials, shipments broken into line items, that kind of thing. I've come full circle on some of it since. Nearly every table got its own controller and set of views, and most of that was ceremony around things that could have been columns.
+
+**Tests.** The tests folder is the two `ExampleTest` files Laravel ships with. Every change above is a refactor I could only make safely with feature tests around the order and intake flows, so those would come first.
