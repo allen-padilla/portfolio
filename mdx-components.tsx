@@ -4,6 +4,7 @@ import { Figure } from "@/components/mdx/Figure";
 import { Gallery } from "@/components/mdx/Gallery";
 import { Label } from "@/components/mdx/Label";
 import { Stack } from "@/components/mdx/Stack";
+import { Stats } from "@/components/mdx/Stats";
 import { Video } from "@/components/mdx/Video";
 
 const components = {
@@ -12,6 +13,7 @@ const components = {
   Gallery,
   Label,
   Stack,
+  Stats,
   Video,
 } satisfies MDXComponents;
 

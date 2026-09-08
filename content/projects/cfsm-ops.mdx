@@ -61,16 +61,16 @@ The people doing the work needed to see just their part. Leadership needed repor
 
 The last time I had to dig into the backend, this is roughly what it was holding.
 
-| | |
-|---|---|
-| Inventory records | 100,000+ |
-| Orders, RMAs, and received shipments | Thousands |
-| Recycled equipment entries per shipment | Hundreds |
-| Database tables | 46 |
-| Controllers | 41 |
-| Views | 100+ |
-| Operational areas | 10 |
-| Commits | 471 |
+<Stats items={[
+  { label: "Inventory records", value: 100000, suffix: "+" },
+  { label: "Orders, RMAs, and received shipments", value: 3000, suffix: "+" },
+  { label: "Recycled equipment entries per shipment", value: 200, suffix: "+" },
+  { label: "Database tables", value: 46 },
+  { label: "Controllers", value: 41 },
+  { label: "Views", value: 100, suffix: "+" },
+  { label: "Operational areas", value: 10 },
+  { label: "Commits", value: 471 },
+]} />
 
 ## Outcome
 
