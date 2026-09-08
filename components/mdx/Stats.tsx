@@ -9,12 +9,14 @@ type Stat = {
   suffix?: string;
 };
 
-type Props = { items: Stat[] };
+type Props = { items: Stat[]; columns?: 2 | 3 };
 
 const DURATION_MS = 1200;
 
+const SM_COLS_CLASS = { 2: "sm:grid-cols-2", 3: "sm:grid-cols-3" } as const;
+
 /** Grid of stat tiles whose numbers count up from zero the first time the grid scrolls into view. */
-export function Stats({ items }: Props) {
+export function Stats({ items, columns = 3 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [started, setStarted] = useState(false);
 
@@ -36,7 +38,7 @@ export function Stats({ items }: Props) {
   }, []);
 
   return (
-    <div ref={ref} className="my-8 grid grid-cols-2 gap-px border border-rule bg-rule sm:grid-cols-3">
+    <div ref={ref} className={`my-8 grid grid-cols-2 gap-px border border-rule bg-rule ${SM_COLS_CLASS[columns]}`}>
       {items.map((item) => (
         <StatTile key={item.label} {...item} start={started} />
       ))}
