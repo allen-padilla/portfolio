@@ -41,7 +41,7 @@ The people doing the work needed to see just their part. Leadership needed repor
 
 **Access.** I wrote the role and permission layer from scratch, so admins, supervisors, and floor staff each only see the modules that matter to them.
 
-**RMAs and recycling.** Returns go through their own RMA flow. Received shipments get logged as a whole, then broken down item by item, so one shipment of recycled equipment can have hundreds of entries and still trace back to where it came from.
+**RMAs and recycling.** Returns go through their own RMA flow. Received shipments get logged as a whole, then broken down item by item, so one shipment of recycled equipment can average over 100 entries and still trace back to where it came from.
 
 <Figure src="/projects/cfsm-ops/rma.png" alt="New RMA form" width={1924} height={1042} caption="Opening an RMA. The material, the reported problem, who brought it in, whether data needs recovering, and a checklist of what came with it." />
 
@@ -64,8 +64,8 @@ The last time I had to dig into the backend, this is roughly what it was holding
 <Stats items={[
   { label: "Inventory records", value: 100000, suffix: "+" },
   { label: "Devices placed with eligible clients", value: 20000, suffix: "+" },
-  { label: "Orders, RMAs, and received shipments", value: 8000, suffix: "+" },
-  { label: "Recycled equipment entries per shipment", value: 200, suffix: "+" },
+  { label: "Orders", value: 8000, suffix: "+" },
+  { label: "Average recycled equipment entries per shipment", value: 100, suffix: "+" },
   { label: "Database tables", value: 46 },
   { label: "Controllers", value: 41 },
   { label: "Views", value: 100, suffix: "+" },
