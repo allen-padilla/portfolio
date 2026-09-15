@@ -451,7 +451,7 @@
 
 /* ---------- Member, Graduation, MVLP, and Homeland feature cards ----------
    (components/home/MemberFeature.tsx, GradFeature.tsx, MvlpFeature.tsx, HomelandFeature.tsx).
-   Same looping idea as the two above on 15s, 14s, 17s, and 18s cycles so all five cards drift out of step. Base
+   Same looping idea as the two above on 15s, 14s, 17s, and 20s cycles so all five cards drift out of step. The Homeland stage has no fade of its own: its clip fades itself, and a second fade blinked against it. Base
    styles are hand-written here; the keyframes between the @generated markers come from
    `node scripts/feature-keyframes.mjs`. Edit the timings there, not here. */
 @layer components {
@@ -526,10 +526,10 @@
 
   .hf {
     --hf-ease: cubic-bezier(0.22, 1, 0.36, 1);
-    background: #e8dcc4;
+    background: #1b2838;
   }
   .hf-wash {
-    background: linear-gradient(135deg, rgba(232, 220, 196, 0.94) 0%, rgba(232, 220, 196, 0.6) 30%, rgba(232, 220, 196, 0) 58%);
+    background: linear-gradient(135deg, rgba(27, 40, 56, 0.92) 0%, rgba(27, 40, 56, 0.55) 30%, rgba(27, 40, 56, 0) 58%);
   }
   .hf-pill {
     display: block;
@@ -748,40 +748,35 @@
   0%, 96.471% { opacity: 1; }
   100% { opacity: 0; }
 }
-  /* hf: 18s cycle */
-  .hf-word { animation: hf-hf-word-cycle 18s var(--hf-ease) infinite both; }
-  .hf-tag { animation: hf-hf-tag-cycle 18s var(--hf-ease) infinite both; }
-  .hf-pill-1 { animation: hf-hf-pill-1-cycle 18s var(--hf-ease) infinite both; }
-  .hf-route { animation: hf-hf-route-cycle 18s var(--hf-ease) infinite both; }
-  .hf-pill-2 { animation: hf-hf-pill-2-cycle 18s var(--hf-ease) infinite both; }
-  .hf-stage { animation: hf-stage-cycle 18s linear infinite; }
+  /* hf: 20s cycle */
+  .hf-word { animation: hf-hf-word-cycle 20s var(--hf-ease) infinite both; }
+  .hf-tag { animation: hf-hf-tag-cycle 20s var(--hf-ease) infinite both; }
+  .hf-pill-1 { animation: hf-hf-pill-1-cycle 20s var(--hf-ease) infinite both; }
+  .hf-route { animation: hf-hf-route-cycle 20s var(--hf-ease) infinite both; }
+  .hf-pill-2 { animation: hf-hf-pill-2-cycle 20s var(--hf-ease) infinite both; }
   .hf-art { animation: ff-float 7s ease-in-out 0s infinite; }
   .group:hover .hf-art { animation-play-state: paused; }
 @keyframes hf-hf-word-cycle {
-  0%, 1.667% { transform: translateY(10px) ; opacity: 0; }
-  5.000%, 100% { transform: translateY(0) ; opacity: 1; }
+  0%, 1.500% { transform: translateY(10px) ; opacity: 0; }
+  4.500%, 100% { transform: translateY(0) ; opacity: 1; }
 }
 @keyframes hf-hf-tag-cycle {
-  0%, 3.889% { transform: translateY(10px) ; opacity: 0; }
-  6.667%, 100% { transform: translateY(0) ; opacity: 1; }
+  0%, 3.500% { transform: translateY(10px) ; opacity: 0; }
+  6.000%, 100% { transform: translateY(0) ; opacity: 1; }
 }
 @keyframes hf-hf-pill-1-cycle {
-  0%, 7.778% { transform: scale(0.4); opacity: 0; }
-  9.278% { transform: scale(1.12); opacity: 1; }
-  10.278%, 100% { transform: scale(1); opacity: 1; }
+  0%, 7.000% { transform: scale(0.4); opacity: 0; }
+  8.350% { transform: scale(1.12); opacity: 1; }
+  9.250%, 100% { transform: scale(1); opacity: 1; }
 }
 @keyframes hf-hf-route-cycle {
-  0%, 9.444% { transform: scaleX(0); }
-  13.333%, 100% { transform: scaleX(1); }
+  0%, 8.500% { transform: scaleX(0); }
+  12.000%, 100% { transform: scaleX(1); }
 }
 @keyframes hf-hf-pill-2-cycle {
-  0%, 13.333% { transform: scale(0.4); opacity: 0; }
-  14.833% { transform: scale(1.12); opacity: 1; }
-  15.833%, 100% { transform: scale(1); opacity: 1; }
-}
-@keyframes hf-stage-cycle {
-  0%, 96.667% { opacity: 1; }
-  100% { opacity: 0; }
+  0%, 12.000% { transform: scale(0.4); opacity: 0; }
+  13.350% { transform: scale(1.12); opacity: 1; }
+  14.250%, 100% { transform: scale(1); opacity: 1; }
 }
 /* @generated feature-keyframes end */
 }

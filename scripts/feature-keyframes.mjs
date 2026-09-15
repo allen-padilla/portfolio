@@ -1,7 +1,7 @@
 // Generates the looping keyframes for the home page feature cards and writes them
 // into app/globals.css between the @generated markers. Each card is one long cycle:
 // the story plays in the first few seconds, holds, fades out in the last 0.6s, then
-// replays. Times below are seconds into the cycle; the script turns them into
+// replays. A card whose backdrop is a clip that fades itself sets stageFade: false. Times below are seconds into the cycle; the script turns them into
 // percent offsets so nothing has to be hand-edited.
 //
 //   node scripts/feature-keyframes.mjs
@@ -96,8 +96,10 @@ const cards = [
   },
   {
     prefix: "hf",
-    cycle: 18,
+    // Matches the 20s clip behind it, which fades itself out, so the stage keeps no fade of its own.
+    cycle: 20,
     floatDelay: 0,
+    stageFade: false,
     elements: [
       { sel: ".hf-word", steps: rise(0.3, 0.6) },
       { sel: ".hf-tag", steps: rise(0.7, 0.5) },
@@ -113,13 +115,13 @@ const nameFor = (prefix, sel) => `${prefix}-${sel.replace(/^\./, "").replace(/[^
 
 let out = "";
 for (const card of cards) {
-  const { prefix, cycle, floatDelay, elements } = card;
+  const { prefix, cycle, floatDelay, elements, stageFade = true } = card;
   const ease = `var(--${prefix}-ease)`;
   out += `  /* ${prefix}: ${cycle}s cycle */\n`;
   for (const el of elements) {
     out += `  ${el.sel} { animation: ${nameFor(prefix, el.sel)} ${cycle}s ${ease} infinite both; }\n`;
   }
-  out += `  .${prefix}-stage { animation: ${prefix}-stage-cycle ${cycle}s linear infinite; }\n`;
+  if (stageFade) out += `  .${prefix}-stage { animation: ${prefix}-stage-cycle ${cycle}s linear infinite; }\n`;
   out += `  .${prefix}-art { animation: ff-float 7s ease-in-out ${floatDelay}s infinite; }\n`;
   out += `  .group:hover .${prefix}-art { animation-play-state: paused; }\n`;
   for (const el of elements) {
@@ -133,7 +135,7 @@ for (const card of cards) {
     });
     out += `}\n`;
   }
-  out += `@keyframes ${prefix}-stage-cycle {\n  0%, ${pct(cycle - FADE, cycle)} { opacity: 1; }\n  100% { opacity: 0; }\n}\n`;
+  if (stageFade) out += `@keyframes ${prefix}-stage-cycle {\n  0%, ${pct(cycle - FADE, cycle)} { opacity: 1; }\n  100% { opacity: 0; }\n}\n`;
 }
 
 const START = "/* @generated feature-keyframes start */";
