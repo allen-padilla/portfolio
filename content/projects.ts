@@ -84,7 +84,7 @@ export const projects: Project[] = [
     status: "Shipped",
     featured: true,
     confidential: true,
-    stack: ["Laravel 13", "Inertia", "React 19", "PostgreSQL", "Azure AD SSO", "OAuth2"],
+    stack: ["Laravel 13", "Inertia", "React 19", "PostgreSQL", "Azure AD SSO", "OAuth2", "WordPress"],
     images: [
       { src: "/projects/member-platform/dashboard.png", alt: "Dashboard with the next event, member totals, and new-member counts by month, quarter, and fiscal year", width: 1600, height: 1000, caption: "The dashboard: next event, member totals, and new members by month, quarter, and fiscal year. Sample data." },
       { src: "/projects/member-platform/members-list.png", alt: "Members list with filters for citizenship, verification, and pending updates, names blurred", width: 1600, height: 1120, caption: "The members list with its filters. Names and citizen numbers are blurred." },
@@ -93,9 +93,9 @@ export const projects: Project[] = [
       { src: "/projects/member-platform/events.png", alt: "Events list with upcoming and completed counts and a quick scan button for the next event", width: 1600, height: 1000, caption: "The events list, with quick scan and directions for whatever is next." },
     ],
     summary:
-      "The system of record for one of the organization's departments. Over 2,000 members, their regional locals, and every event they run. Staff sign in with their existing work accounts, and the public website pulls member data straight from it instead of someone re-typing it.",
+      "The system of record for one of the organization's departments. Over 2,000 members, their regional locals, and every event they run. Staff sign in with their existing work accounts. Custom WordPress plugins connect the public site to the platform, so staff stop re-typing and members can update their own information.",
     description:
-      "Member management and events platform for the Manitoba Métis Federation. 2,000+ members, Azure AD sign-in, and an OAuth2 API feeding the public site.",
+      "Member management and events platform for the Manitoba Métis Federation. 2,000+ members, Azure AD sign-in, and custom WordPress plugins connecting the public site so staff stop re-typing and members can update their own info.",
     role: "Sole developer",
     timeline: "Shipped 2026, ongoing support",
     team: "Solo, with the department's director and frontline staff as stakeholders",
