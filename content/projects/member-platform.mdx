@@ -38,14 +38,14 @@ It's Laravel 13 with Inertia and React 19 on the front, and PostgreSQL underneat
 
 <Figure src="/projects/member-platform/events.png" alt="Events list with upcoming and completed counts and a quick scan button for the next event" width={1600} height={1000} caption="The events list. Quick scan and directions for the next event are one tap away, which matters on a phone at the door." />
 
-**The website.** An OAuth2 API gives the public site its member data, so it reads from the platform instead of keeping its own copy.
+**The website.** Custom WordPress plugins connect the public site to the platform's OAuth2 API. Member and event data flows out so staff stop re-typing, and member updates flow back in so people can keep their own information current.
 
 ## Decisions
 
 - Azure AD groups map straight to roles instead of a user list inside the app, so access changes when someone changes teams and nothing goes stale.
 - A re-registration never overwrites the record. Each changed field becomes an alert with the new value beside the current one, and the member sits in pending review until staff clear them.
 - Regional locals are their own records, not a text field on the member.
-- The public website reads members through an OAuth2 API instead of keeping its own copy, so nobody types the same thing twice.
+- Custom WordPress plugins connect the public site to the platform's OAuth2 API, so member and event data stays in sync both ways—staff stop re-typing and members can update their own information.
 - The on-site count resets each morning on local time, so a multi-day event starts every day at zero.
 
 ## Outcome
